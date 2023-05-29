@@ -1,0 +1,12 @@
+PS D:\allFiles\docker\task3> docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+alpine       latest    5e2b554c1c45   2 weeks ago   7.33MB
+node         15.14     3d3f41722daf   2 years ago   936MB
+
+PS D:\allFiles\docker\task3> docker run -d --name first_node -v ${PWD}/var/first/data:/data node:15.14          
+f682e2888ec83e99c2304c949b234d732c996aa4800cb5bfe80c727418d8c502
+PS D:\allFiles\docker\task3> docker ps   
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS D:\allFiles\docker\task3> docker run -d --name second_node -v ${PWD}/var/second/data:/data node:15.14
+441517fc88130d1e81a24cee3d0b810e759d61a00c3379798832b9840bcff8ef
+PS D:\allFiles\docker\task3> 

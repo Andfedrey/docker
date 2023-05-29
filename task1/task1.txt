@@ -1,0 +1,59 @@
+PS D:\все файлы\docker> docker pull busybox
+Using default tag: latest
+latest: Pulling from library/busybox
+Digest: sha256:560af6915bfc8d7630e50e212e08242d37b63bd5c1ccf9bd4acccf116e262d5b
+Status: Image is up to date for busybox:latest
+docker.io/library/busybox:latest
+
+PS D:\все файлы\docker> docker run -it --name pinger busybox ping -c 7 netology.ru
+PING netology.ru (188.114.99.229): 56 data bytes
+64 bytes from 188.114.99.229: seq=0 ttl=62 time=57.604 ms
+64 bytes from 188.114.99.229: seq=1 ttl=62 time=53.907 ms
+64 bytes from 188.114.99.229: seq=2 ttl=62 time=71.792 ms
+64 bytes from 188.114.99.229: seq=3 ttl=62 time=70.322 ms
+64 bytes from 188.114.99.229: seq=4 ttl=62 time=71.192 ms
+64 bytes from 188.114.99.229: seq=5 ttl=62 time=56.768 ms
+64 bytes from 188.114.99.229: seq=6 ttl=62 time=69.599 ms
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 53.907/64.454/71.792 ms
+
+PS D:\все файлы\docker> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                     PORTS     NAMES
+560e8e0cf674   busybox   "ping -c 7 netology.…"   2 minutes ago   Exited (0) 2 minutes ago             pinger
+
+PS D:\все файлы\docker> docker logs pinger
+PING netology.ru (188.114.99.229): 56 data bytes
+64 bytes from 188.114.99.229: seq=0 ttl=62 time=57.604 ms
+64 bytes from 188.114.99.229: seq=1 ttl=62 time=53.907 ms
+64 bytes from 188.114.99.229: seq=2 ttl=62 time=71.792 ms
+64 bytes from 188.114.99.229: seq=3 ttl=62 time=70.322 ms
+64 bytes from 188.114.99.229: seq=4 ttl=62 time=71.192 ms
+64 bytes from 188.114.99.229: seq=5 ttl=62 time=56.768 ms
+64 bytes from 188.114.99.229: seq=6 ttl=62 time=69.599 ms
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 53.907/64.454/71.792 ms
+
+PS D:\все файлы\docker> docker start pinger
+pinger
+
+PS D:\все файлы\docker> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS                     PORTS     NAMES
+560e8e0cf674   busybox   "ping -c 7 netology.…"   5 minutes ago   Exited (0) 8 seconds ago             pinger
+
+PS D:\все файлы\docker> docker logs pinger > logs.txt
+
+PS D:\все файлы\docker> docker history busybox
+IMAGE          CREATED      CREATED BY                                      SIZE      COMMENT
+8135583d97fe   9 days ago   /bin/sh -c #(nop)  CMD ["sh"]                   0B
+<missing>      9 days ago   /bin/sh -c #(nop) ADD file:cfd4bc7e9470d1298…   4.86MB
+
+PS D:\все файлы\docker> docker rm pinger 
+pinger
+
+PS D:\все файлы\docker> docker rmi busybox
+Untagged: busybox:latest
+Untagged: busybox@sha256:560af6915bfc8d7630e50e212e08242d37b63bd5c1ccf9bd4acccf116e262d5b
+Deleted: sha256:8135583d97feb82398909c9c97607159e6db2c4ca2c885c0b8f590ee0f9fe90d
+Deleted: sha256:9547b4c33213e630a0ca602a989ecc094e042146ae8afa502e1e65af6473db03

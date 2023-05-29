@@ -1,0 +1,26 @@
+PS D:\все файлы\docker> docker pull node
+PS D:\все файлы\docker> docker run -it -e NAME=Andrew -e SURNAME=Fedorov --name mynode node:15.14.0 
+PS D:\все файлы\docker> docker exec mynode env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=ef88068cd108
+NAME=Andrew
+SURNAME=Fedorov
+NODE_VERSION=15.14.0
+YARN_VERSION=1.22.5
+HOME=/root
+PS D:\все файлы\docker> docker stop mynode
+mynode
+PS D:\все файлы\docker> docker rmi node:15.14
+Untagged: node:15.14
+PS D:\все файлы\docker> docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+alpine       latest    5e2b554c1c45   2 weeks ago   7.33MB
+node         15.14.0   3d3f41722daf   2 years ago   936MB
+PS D:\все файлы\docker> docker rm mynode
+mynode
+PS D:\все файлы\docker> docker rm node:15.14
+Error response from daemon: No such container: node:15.14
+PS D:\все файлы\docker> docker rmi node:15.14
+Error response from daemon: No such image: node:15.14
+PS D:\все файлы\docker> 
+
